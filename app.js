@@ -55,7 +55,6 @@ let post = document.getElementById("regForm");
 post.addEventListener("submit", function(event){
 event.preventDefault()
 
-// RECUP DATA 
 console.log(nomEleve.value);
 console.log(prenomEleve.value);
 console.log(selectClasse.options[selectClasse.selectedIndex].value);

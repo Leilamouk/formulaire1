@@ -22,7 +22,7 @@
     <select name="classe" id="sexe">
       <option value="">Sélctionnez le Sexe</option>
       <option value="Masculin">Masculin</option>
-      <option value="Feminin">Feminin</option>
+      <option value="Feminin">Féminin</option>
     </select>
   </p>
   <p><input type="date" placeholder="Date de naissance" oninput="this.className = ''" name="" id="Edate" ></p>
@@ -63,6 +63,21 @@
       </div>
 
   </form>
+  <div class="col-8">
+    <h1>Liste des élèves</h1>
+    <table style="width: 100%;" class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Genre</th>
+                <th>Date de naissance</th>
+                <th>Lieu de naissance</th>
+                <th>Classe</th>
+            </tr>
+        </thead>
+        <tbody id="élèves">
+</div>
 <script src="app.js"></script>
 </body>
 </html>
