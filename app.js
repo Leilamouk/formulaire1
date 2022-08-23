@@ -1,76 +1,88 @@
-// Default tab
-$(".tab").css("display", "none");
-$("#tab-1").css("display", "block");
+window.addEventListener('load', () => {
+  eleves = JSON.parse(localStorage.getItem('lists')) || [];
+  viewer()   
+})
 
-function run(hideTab, showTab){
-  if(hideTab < showTab){ // If not press previous button
-    // Validation if press next button
-    var currentTab = 0;
-    x = $('#tab-'+hideTab);
-    y = $(x).find("input")
-    for (i = 0; i < y.length; i++){
-      if (y[i].value == ""){
-        $(y[i]).css("background", "#ffdddd");
-        return false;
-      }
-    }
+
+let eleves = []
+let stockEleve = JSON.parse(localStorage.getItem('eleves')) 
+
+console.log(stockEleve)
+
+function recuperer(){
+
+  
+let nom = document.getElementById('nom').value
+let prenom = document.getElementById('prenom').value
+let genre = document.getElementById('genre').value
+let date = document.getElementById('date').value
+let lieu = document.getElementById('lieu').value
+let classe = document.getElementById('classe').value
+let profession = document.getElementById('profession').value
+let numero = document.getElementById('numero').value
+let email = document.getElementById('email').value
+
+let eleve = {
+  nom : nom,
+  prenom : prenom,
+  genre : genre,
+  date : date,
+  lieu : lieu,
+  classe : classe,
+  profession : profession,
+  numero : numero,
+  email : email,
+}
+
+
+eleves.push(eleve)
+localStorage.setItem("eleves", JSON.stringify(eleves));
+let tableau = document.getElementById('tableau')
+tableau.innerHTML += `
+<tr>
+  <td>${nom}</td>
+  <td>${prenom}</td>
+  <td>${genre}</td>
+  <td>${date}</td>
+  <td>${lieu}</td>
+  <td>${classe}</td>
+  <td>${nom}</td>
+  <td>${prenom}</td>
+  <td>${profession}</td>
+  <td>${numero}</td>
+  <td>${email}</td>
+</tr>
+`
+
+}
+
+
+function viewer() {
+  for (let index = 0; index < stockEleve.length; index++) {
+      let tableau = document.getElementById('tableau')
+  
+   
+  tableau.innerHTML += `
+  <tr>
+     <td>${stockEleve[index].nom}</td>
+     <td>${stockEleve[index].prenom}</td>
+     <td>${stockEleve[index].genre}</td>
+     <td>${stockEleve[index].date}</td>
+     <td>${stockEleve[index].lieu}</td>
+     <td>${stockEleve[index].classe}</td>
+     <td>${stockEleve[index].nom}</td>
+     <td>${stockEleve[index].prenom}</td>
+     <td>${stockEleve[index].profession}</td>
+     <td>${stockEleve[index].numero}</td>
+     <td>${stockEleve[index].email}</td>
+  </tr>
+  `
+     
   }
-
-  // Progress bar
-  for (i = 1; i < showTab; i++){
-    $("#step-"+i).css("opacity", "1");
-  }
-
-  // Switch tab
-  $("#tab-"+hideTab).css("display", "none");
-  $("#tab-"+showTab).css("display", "block");
-  $("input").css("background", "#fff");
 }
 
 
 
-
-
-// VARIABLE
-
-// ELEVE
-let nomEleve = document.getElementById("Enom"),
-prenomEleve = document.getElementById("Eprenom"),
-selectSexe = document.getElementById("sexe"),
-dateEleve = document.getElementById("Edate"),
-lieuEleve = document.getElementById("lieuNaiss"),
-selectClasse = document.getElementById("classe");
-
-// TUTEUR
-let nomTuteur = document.getElementById("Tnom"),
-prenomTuteur = document.getElementById("Tprenom"),
-ProfessionTuteur = document.getElementById("TProfession"),
-contactTuteur = document.getElementById("Tcontact"),
-emailTuteur = document.getElementById("Temail");
-
-
-
-let post = document.getElementById("regForm");
-
-post.addEventListener("submit", function(event){
-event.preventDefault()
-
-console.log(nomEleve.value);
-console.log(prenomEleve.value);
-console.log(selectClasse.options[selectClasse.selectedIndex].value);
-console.log(dateEleve.value);
-console.log(lieuEleve.value);
-console.log(selectSexe.options[selectSexe.selectedIndex].value);
-
-
-console.log(nomTuteur.value);
-console.log(prenomTuteur.value);
-console.log(ProfessionTuteur.value);
-console.log(contactTuteur.value);
-console.log(emailTuteur.value);
-
-run(2, 1)
-});
 
 
 
